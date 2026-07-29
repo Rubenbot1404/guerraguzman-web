@@ -1,0 +1,39 @@
+{
+  "propiedades": [
+    {
+      "id": "casa-chicureo-los-trapenses",
+      "titulo": "Casa en Los Trapenses",
+      "operacion": "Arriendo",
+      "tipo": "Casa",
+      "comuna": "Colina",
+      "direccion": "Camino Los Trapenses 1234, Chicureo, Colina",
+      "precioUF": 28,
+      "dorm": 4,
+      "banos": 3,
+      "m2": 180,
+      "superficieUtil": 180,
+      "superficieTotal": 420,
+      "estacionamientos": 2,
+      "bodegas": 1,
+      "gastosComunes": 95000,
+      "contribuciones": 0,
+      "rol": "1234-56",
+      "estado": "Disponible",
+      "descripcion": "Casa de un piso en condominio con seguridad 24/7, orientación norte, living-comedor con salida a terraza y patio con quincho techado. A 5 minutos del acceso a la Autopista Los Andes.",
+      "caracteristicas": [
+        "Condominio con seguridad 24/7",
+        "Quincho techado",
+        "Cocina amoblada",
+        "Calefacción por losa radiante",
+        "Paneles solares",
+        "Acceso controlado"
+      ],
+      "fotos": [],
+      "video": "",
+      "tourVirtual": "",
+      "planoPdf": "",
+      "lat": -33.2870,
+      "lng": -70.6650
+    }
+  ]
+}
