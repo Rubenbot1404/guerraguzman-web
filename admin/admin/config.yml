@@ -1,0 +1,54 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "propiedades"
+    label: "Propiedades"
+    files:
+      - name: "listado"
+        label: "Listado de propiedades"
+        file: "data/propiedades.json"
+        fields:
+          - label: "Propiedades"
+            name: "propiedades"
+            widget: "list"
+            summary: "{{titulo}} — {{operacion}}"
+            fields:
+              - {label: "ID (único, sin espacios ni tildes)", name: "id", widget: "string", hint: "Ej: casa-chicureo-los-trapenses"}
+              - {label: "Título", name: "titulo", widget: "string"}
+              - {label: "Operación", name: "operacion", widget: "select", options: ["Arriendo", "Venta"]}
+              - {label: "Tipo", name: "tipo", widget: "select", options: ["Departamento", "Casa", "Oficina", "Local comercial"]}
+              - {label: "Comuna", name: "comuna", widget: "string"}
+              - {label: "Dirección", name: "direccion", widget: "string", required: false}
+              - {label: "Precio (UF)", name: "precioUF", widget: "number"}
+              - {label: "Dormitorios", name: "dorm", widget: "number", required: false}
+              - {label: "Baños", name: "banos", widget: "number"}
+              - {label: "m² (para la tarjeta de listado)", name: "m2", widget: "number"}
+              - {label: "Superficie útil (m²)", name: "superficieUtil", widget: "number", required: false}
+              - {label: "Superficie total (m²)", name: "superficieTotal", widget: "number", required: false}
+              - {label: "Estacionamientos", name: "estacionamientos", widget: "number", required: false}
+              - {label: "Bodegas", name: "bodegas", widget: "number", required: false}
+              - {label: "Gastos comunes (CLP)", name: "gastosComunes", widget: "number", required: false}
+              - {label: "Contribuciones (CLP)", name: "contribuciones", widget: "number", required: false}
+              - {label: "Rol", name: "rol", widget: "string", required: false}
+              - {label: "Estado", name: "estado", widget: "select", options: ["Disponible", "Reservado", "Arrendado", "Vendido"], required: false}
+              - {label: "Descripción", name: "descripcion", widget: "text", required: false}
+              - label: "Características"
+                name: "caracteristicas"
+                widget: "list"
+                required: false
+                field: {label: "Ítem", name: "item", widget: "string"}
+              - label: "Fotos"
+                name: "fotos"
+                widget: "list"
+                required: false
+                field: {label: "Imagen", name: "src", widget: "image"}
+              - {label: "Video (link de YouTube o Vimeo)", name: "video", widget: "string", required: false}
+              - {label: "Tour virtual (URL)", name: "tourVirtual", widget: "string", required: false}
+              - {label: "Plano (PDF)", name: "planoPdf", widget: "file", required: false}
+              - {label: "Latitud", name: "lat", widget: "number", required: false}
+              - {label: "Longitud", name: "lng", widget: "number", required: false}
