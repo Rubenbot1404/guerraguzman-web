@@ -194,6 +194,32 @@
     return n.toLocaleString('es-CL');
   }
 
+  function formatCLP(n){
+    return '$' + Math.round(n).toLocaleString('es-CL');
+  }
+
+  var ufValor = null; // valor de la UF de hoy, en pesos (se carga desde mindicador.cl)
+  function cargarUF(){
+    return fetch('https://mindicador.cl/api/uf')
+      .then(function(res){ return res.json(); })
+      .then(function(data){
+        if(data && data.serie && data.serie.length){ ufValor = data.serie[0].valor; }
+      })
+      .catch(function(){ /* si falla, simplemente no se muestra el equivalente en pesos */ });
+  }
+
+  function precioHTML(p){
+    var moneda = p.moneda || 'UF';
+    if(moneda === 'CLP'){
+      return formatCLP(p.precioUF) + (p.operacion === 'Arriendo' ? '<span class="uf">/mes</span>' : '');
+    }
+    var html = 'UF ' + formatUF(p.precioUF) + (p.operacion === 'Arriendo' ? '<span class="uf">/mes</span>' : '');
+    if(ufValor){
+      html += '<div class="uf" style="margin-left:0; margin-top:2px;">≈ ' + formatCLP(p.precioUF * ufValor) + '</div>';
+    }
+    return html;
+  }
+
   function slugify(str){
     return (str || '').toString().toLowerCase()
       .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
@@ -240,7 +266,7 @@
       card.innerHTML =
         '<div class="card-media"><span class="card-badge">' + p.operacion + '</span>' + media + '</div>' +
         '<div class="card-body">' +
-          '<div class="card-price">' + (p.operacion === 'Arriendo' ? 'UF ' + formatUF(p.precioUF) + '<span class="uf">/mes</span>' : 'UF ' + formatUF(p.precioUF)) + '</div>' +
+          '<div class="card-price">' + precioHTML(p) + '</div>' +
           '<div class="card-loc">' + p.tipo + ' · ' + p.comuna + '</div>' +
           '<div class="card-specs">' +
             (p.dorm ? '<span>' + p.dorm + ' dorm</span>' : '') +
@@ -265,10 +291,12 @@
 
   // Carga las propiedades desde data/propiedades.json — el mismo archivo que edita el panel /admin.
   // Nota: esto solo funciona cuando el sitio está publicado (http/https), no al abrir el archivo directo con doble clic.
-  fetch('data/propiedades.json')
-    .then(function(res){ return res.json(); })
-    .then(function(data){
-      PROPIEDADES = data.propiedades || [];
+  Promise.all([
+    fetch('data/propiedades.json').then(function(res){ return res.json(); }),
+    cargarUF()
+  ])
+    .then(function(results){
+      PROPIEDADES = results[0].propiedades || [];
       poblarComunas();
       render();
     })

@@ -210,7 +210,17 @@
   }
 
   function formatUF(n){ return Number(n).toLocaleString('es-CL'); }
-  function formatCLP(n){ return '$' + Number(n).toLocaleString('es-CL'); }
+  function formatCLP(n){ return '$' + Math.round(Number(n)).toLocaleString('es-CL'); }
+
+  var ufValor = null; // valor de la UF de hoy, en pesos (se carga desde mindicador.cl)
+  function cargarUF(){
+    return fetch('https://mindicador.cl/api/uf')
+      .then(function(res){ return res.json(); })
+      .then(function(data){
+        if(data && data.serie && data.serie.length){ ufValor = data.serie[0].valor; }
+      })
+      .catch(function(){ /* si falla, simplemente no se muestra el equivalente en pesos */ });
+  }
 
   function toEmbedVideo(url){
     if(!url) return null;
@@ -253,9 +263,18 @@
       main.innerHTML = buildingIcon;
     }
 
-    // price
-    document.getElementById('price-block').innerHTML =
-      'UF ' + formatUF(p.precioUF) + (p.operacion === 'Arriendo' ? '<span class="uf-suffix">/mes</span>' : '');
+    // price (soporta moneda "UF" o "CLP"; si es UF, muestra además el equivalente en pesos del día)
+    var moneda = p.moneda || 'UF';
+    var precioHtml;
+    if(moneda === 'CLP'){
+      precioHtml = formatCLP(p.precioUF) + (p.operacion === 'Arriendo' ? '<span class="uf-suffix">/mes</span>' : '');
+    } else {
+      precioHtml = 'UF ' + formatUF(p.precioUF) + (p.operacion === 'Arriendo' ? '<span class="uf-suffix">/mes</span>' : '');
+      if(ufValor){
+        precioHtml += '<div class="uf-suffix" style="margin-left:0; margin-top:4px;">≈ ' + formatCLP(p.precioUF * ufValor) + '</div>';
+      }
+    }
+    document.getElementById('price-block').innerHTML = precioHtml;
 
     // description
     if(p.descripcion){ document.getElementById('p-desc').textContent = p.descripcion; }
@@ -280,8 +299,12 @@
         '<iframe src="https://www.openstreetmap.org/export/embed.html?bbox=' + bbox + '&marker=' + p.lat + ',' + p.lng + '" loading="lazy"></iframe>';
       document.getElementById('p-direccion').textContent = p.direccion || '';
     } else if(p.direccion){
-      document.getElementById('p-map').parentElement.querySelector('.frame-wrap').remove ? null : null;
-      document.getElementById('p-direccion').textContent = p.direccion;
+      // Sin coordenadas no se puede mostrar un mapa embebido de forma confiable sin API key.
+      // En vez de dejar un cuadro en blanco, se quita el cuadro y se muestra un enlace que sí funciona siempre.
+      var mapEl = document.getElementById('p-map');
+      mapEl.style.display = 'none';
+      document.getElementById('p-direccion').innerHTML =
+        p.direccion + ' — <a href="https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(p.direccion) + '" target="_blank" rel="noopener">Ver en Google Maps →</a>';
     } else {
       hide('block-map');
     }
@@ -319,9 +342,12 @@
     show('detail');
   }
 
-  fetch('data/propiedades.json')
-    .then(function(res){ return res.json(); })
-    .then(function(data){
+  Promise.all([
+    fetch('data/propiedades.json').then(function(res){ return res.json(); }),
+    cargarUF()
+  ])
+    .then(function(results){
+      var data = results[0];
       var list = data.propiedades || [];
       var p = list.find(function(x){
         return (x.id && x.id === id) || slugify(x.titulo) === id;
