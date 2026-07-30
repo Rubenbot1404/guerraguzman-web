@@ -1,25 +1,14 @@
 {
   "propiedades": [
     {
-      "id": "casa-chicureo-los-trapenses",
-      "titulo": "Casa en Los Trapenses",
-      "operacion": "Arriendo",
-      "tipo": "Casa",
-      "comuna": "Colina",
-      "direccion": "Camino Los Trapenses 1234, Chicureo, Colina",
-      "precioUF": 28,
-      "dorm": 4,
-      "banos": 3,
-      "m2": 180,
-      "superficieUtil": 180,
       "superficieTotal": 420,
-      "estacionamientos": 2,
-      "bodegas": 1,
-      "gastosComunes": 95000,
-      "contribuciones": 0,
-      "rol": "1234-56",
+      "superficieUtil": 180,
+      "m2": 180,
+      "lng": -70.665,
+      "dorm": 4,
       "estado": "Disponible",
-      "descripcion": "Casa de un piso en condominio con seguridad 24/7, orientación norte, living-comedor con salida a terraza y patio con quincho techado. A 5 minutos del acceso a la Autopista Los Andes.",
+      "comuna": "Colina",
+      "gastosComunes": 95000,
       "caracteristicas": [
         "Condominio con seguridad 24/7",
         "Quincho techado",
@@ -28,12 +17,46 @@
         "Paneles solares",
         "Acceso controlado"
       ],
-      "fotos": [],
-      "video": "",
-      "tourVirtual": "",
+      "bodegas": 1,
       "planoPdf": "",
-      "lat": -33.2870,
-      "lng": -70.6650
+      "descripcion": "Casa de un piso en condominio con seguridad 24/7, orientación norte, living-comedor con salida a terraza y patio con quincho techado. A 5 minutos del acceso a la Autopista Los Andes.",
+      "rol": "1234-56",
+      "contribuciones": 0,
+      "fotos": [],
+      "direccion": "Camino Los Trapenses 1234, Chicureo, Colina",
+      "estacionamientos": 2,
+      "tourVirtual": "",
+      "banos": 3,
+      "tipo": "Casa",
+      "precioUF": 28,
+      "operacion": "Arriendo",
+      "titulo": "Casa en Los Trapenses",
+      "video": "",
+      "id": "casa-chicureo-los-trapenses",
+      "lat": -33.287
+    },
+    {
+      "superficieTotal": 178,
+      "superficieUtil": 78,
+      "m2": 178,
+      "dorm": 3,
+      "estado": "Disponible",
+      "comuna": "Colina",
+      "gastosComunes": 0,
+      "bodegas": 1,
+      "descripcion": "Casa de dos piso en una Villa con seguridad 24/7, orientación norte, en el segundo piso tres cuarto y dos baños, en el primer piso living-comedor con salida a terraza y patio con quincho techado y un baño para las visitas. A 5 minutos del acceso a la Autopista Los Libertadores.",
+      "contribuciones": "",
+      "fotos": [
+        "/images/uploads/tercer-cuarto.jpg"
+      ],
+      "direccion": "Avenida Los Nogales 1296",
+      "estacionamientos": 2,
+      "banos": 3,
+      "tipo": "Casa",
+      "precioUF": 10,
+      "operacion": "Arriendo",
+      "titulo": "Casa-Avenidad Los Nogales",
+      "id": "Casa-Avenidad Los Nogales"
     }
   ]
 }
