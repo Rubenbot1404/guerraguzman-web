@@ -53,7 +53,8 @@ collections:
               - {label: "Tipo", name: "tipo", widget: "select", options: ["Departamento", "Casa", "Oficina", "Local comercial"]}
               - {label: "Comuna", name: "comuna", widget: "string"}
               - {label: "Dirección", name: "direccion", widget: "string", required: false}
-              - {label: "Precio (UF)", name: "precioUF", widget: "number"}
+              - {label: "Moneda del precio", name: "moneda", widget: "select", options: ["UF", "CLP"], default: "UF", hint: "Si eliges CLP, el monto de abajo se interpreta en pesos chilenos."}
+              - {label: "Precio (en la moneda elegida arriba)", name: "precioUF", widget: "number"}
               - {label: "Dormitorios", name: "dorm", widget: "number", required: false}
               - {label: "Baños", name: "banos", widget: "number"}
               - {label: "m² (para la tarjeta de listado)", name: "m2", widget: "number"}

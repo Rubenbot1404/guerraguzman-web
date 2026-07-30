@@ -194,6 +194,39 @@
     return n.toLocaleString('es-CL');
   }
 
+  function formatCLP(n){
+    return '$' + Math.round(n).toLocaleString('es-CL');
+  }
+
+  var ufValor = null; // valor de la UF de hoy, en pesos (se carga desde mindicador.cl)
+  function cargarUF(){
+    return fetch('https://mindicador.cl/api/uf')
+      .then(function(res){ return res.json(); })
+      .then(function(data){
+        if(data && data.serie && data.serie.length){ ufValor = data.serie[0].valor; }
+      })
+      .catch(function(){ /* si falla, simplemente no se muestra el equivalente en pesos */ });
+  }
+
+  function precioHTML(p){
+    var moneda = p.moneda || 'UF';
+    if(moneda === 'CLP'){
+      return formatCLP(p.precioUF) + (p.operacion === 'Arriendo' ? '<span class="uf">/mes</span>' : '');
+    }
+    var html = 'UF ' + formatUF(p.precioUF) + (p.operacion === 'Arriendo' ? '<span class="uf">/mes</span>' : '');
+    if(ufValor){
+      html += '<div class="uf" style="margin-left:0; margin-top:2px;">≈ ' + formatCLP(p.precioUF * ufValor) + '</div>';
+    }
+    return html;
+  }
+
+  function slugify(str){
+    return (str || '').toString().toLowerCase()
+      .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/(^-|-$)/g, '');
+  }
+
   function poblarComunas(){
     var comunas = Array.from(new Set(PROPIEDADES.map(function(p){ return p.comuna; }))).sort();
     comunas.forEach(function(c){
@@ -225,21 +258,26 @@
     filtered.forEach(function(p){
       var card = document.createElement('div');
       card.className = 'card';
-      var media = p.foto
-        ? '<img src="' + p.foto + '" alt="' + p.titulo + '" style="width:100%; height:100%; object-fit:cover;">'
+      var primerFoto = (p.fotos && p.fotos.length) ? p.fotos[0] : p.foto;
+      var media = primerFoto
+        ? '<img src="' + primerFoto + '" alt="' + p.titulo + '" style="width:100%; height:100%; object-fit:cover;">'
         : buildingIcon;
+      var href = 'propiedad.html?id=' + encodeURIComponent(p.id || slugify(p.titulo));
       card.innerHTML =
         '<div class="card-media"><span class="card-badge">' + p.operacion + '</span>' + media + '</div>' +
         '<div class="card-body">' +
-          '<div class="card-price">' + (p.operacion === 'Arriendo' ? 'UF ' + formatUF(p.precioUF) + '<span class="uf">/mes</span>' : 'UF ' + formatUF(p.precioUF)) + '</div>' +
+          '<div class="card-price">' + precioHTML(p) + '</div>' +
           '<div class="card-loc">' + p.tipo + ' · ' + p.comuna + '</div>' +
           '<div class="card-specs">' +
             (p.dorm ? '<span>' + p.dorm + ' dorm</span>' : '') +
             '<span>' + p.banos + ' baño' + (p.banos !== 1 ? 's' : '') + '</span>' +
             '<span>' + p.m2 + ' m²</span>' +
           '</div>' +
-          '<div class="card-cta"><a href="index.html#contacto">Consultar</a></div>' +
+          '<div class="card-cta"><a href="' + href + '">Ver ficha completa</a></div>' +
         '</div>';
+      card.style.cursor = 'pointer';
+      card.addEventListener('click', function(){ window.location.href = href; });
+      card.querySelector('.card-cta a').addEventListener('click', function(e){ e.stopPropagation(); });
       grid.appendChild(card);
     });
   }
@@ -253,10 +291,12 @@
 
   // Carga las propiedades desde data/propiedades.json — el mismo archivo que edita el panel /admin.
   // Nota: esto solo funciona cuando el sitio está publicado (http/https), no al abrir el archivo directo con doble clic.
-  fetch('data/propiedades.json')
-    .then(function(res){ return res.json(); })
-    .then(function(data){
-      PROPIEDADES = data.propiedades || [];
+  Promise.all([
+    fetch('data/propiedades.json').then(function(res){ return res.json(); }),
+    cargarUF()
+  ])
+    .then(function(results){
+      PROPIEDADES = results[0].propiedades || [];
       poblarComunas();
       render();
     })
