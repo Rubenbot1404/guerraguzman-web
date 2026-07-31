@@ -258,7 +258,7 @@
 
   .split{display:grid; grid-template-columns:0.9fr 1.1fr; gap:60px; align-items:start;}
 
-  .integ-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line-strong); border:1px solid var(--line-strong);}
+  .integ-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:1px; background:var(--line-strong); border:1px solid var(--line-strong);}
   .integ{background:var(--ink-800); padding:22px; display:flex; flex-direction:column; gap:6px;}
   .integ .name{font-weight:600; font-size:15px; color:var(--paper);}
   .integ .type{font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:var(--paper-faint); text-transform:uppercase; letter-spacing:0.05em;}
@@ -574,7 +574,7 @@
     </div>
   </section>
 
-  <div class="divider"><div class="tick-line"></div><span class="label">6 controles de seguridad</span><div class="tick-line"></div></div>
+  <div class="divider"><div class="tick-line"></div><span class="label">Seguridad, hoy y en camino</span><div class="tick-line"></div></div>
 
   <!-- CONFIANZA -->
   <section id="confianza">
@@ -586,26 +586,26 @@
         </div>
         <div class="reveal">
           <ul class="zone-items">
-            <li><span class="crop"></span>Autenticación de dos factores (2FA)</li>
-            <li><span class="crop"></span>Cifrado de datos</li>
-            <li><span class="crop"></span>Respaldos periódicos</li>
-            <li><span class="crop"></span>Permisos por rol dentro de nuestro equipo</li>
+            <li><span class="crop"></span>Cifrado de datos (HTTPS)</li>
+            <li><span class="crop"></span>Respaldos automáticos de cada cambio</li>
             <li><span class="crop"></span>Registro de auditoría de cada acción</li>
-            <li><span class="crop"></span>Firma electrónica con validez legal</li>
           </ul>
         </div>
       </div>
       <div class="note-line reveal" style="margin-top:40px;">
-        <span class="mono" style="color:var(--copper-bright); font-size:12px; letter-spacing:0.05em;">T-103 · TRABAJAMOS CON</span><br><br>
-        Herramientas que ya conoces, para que pagos y trámites no sean una fricción más.
+        <span class="mono" style="color:var(--copper-bright); font-size:12px; letter-spacing:0.05em;">T-103 · HERRAMIENTAS QUE YA USAMOS</span>
       </div>
       <div class="integ-grid reveal" style="margin-top:18px;">
         <div class="integ"><span class="name">Google Maps</span><span class="type">Ubicación</span></div>
-        <div class="integ"><span class="name">Transbank</span><span class="type">Pagos</span></div>
-        <div class="integ"><span class="name">Mercado Pago</span><span class="type">Pagos</span></div>
         <div class="integ"><span class="name">Bancos</span><span class="type">Transferencia directa</span></div>
+      </div>
+      <div class="note-line reveal" style="margin-top:32px;">
+        <span class="mono" style="color:var(--copper-bright); font-size:12px; letter-spacing:0.05em;">T-104 · PRÓXIMAMENTE</span><br><br>
+        Estamos implementando estas herramientas para que pagos y trámites sean aún menos fricción.
+      </div>
+      <div class="integ-grid reveal" style="margin-top:18px;">
+        <div class="integ"><span class="name">Leasity + GoFirmex</span><span class="type">Cobro de arriendo y firma electrónica</span></div>
         <div class="integ"><span class="name">WhatsApp</span><span class="type">Contacto directo</span></div>
-        <div class="integ"><span class="name">DocuSign / GoFirmex</span><span class="type">Firma electrónica</span></div>
       </div>
     </div>
   </section>
@@ -762,14 +762,6 @@
     });
   });
 })();
-</script>
-
-<!-- Permite que los links de invitación de Netlify Identity (para el panel /admin) funcionen desde esta página -->
-<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-<script>
-  if (window.netlifyIdentity) {
-    window.netlifyIdentity.on("init", function (user) {});
-  }
 </script>
 
 </body>
