@@ -586,6 +586,7 @@
         </div>
         <div class="reveal">
           <ul class="zone-items">
+            <li><span class="crop"></span>Autenticación de dos factores (2FA)</li>
             <li><span class="crop"></span>Cifrado de datos (HTTPS)</li>
             <li><span class="crop"></span>Respaldos automáticos de cada cambio</li>
             <li><span class="crop"></span>Registro de auditoría de cada acción</li>
@@ -616,7 +617,7 @@
       <span class="sheet-tag reveal"><span class="code">G-002</span> Contacto</span>
       <div class="section-head reveal">
         <h2>Cotiza tu<br>propiedad</h2>
-        <p class="desc">Cuéntanos los datos básicos y te contactamos dentro de 24 horas hábiles con una propuesta.</p>
+        <p class="desc">Cuéntanos los datos básicos y te contactamos dentro de 1 a 2 días hábiles con una propuesta.</p>
       </div>
 
       <div class="form-panel reveal">
@@ -666,7 +667,7 @@
             </div>
           </div>
           <div class="form-foot">
-            <p class="form-note">Tus datos se usan solo para contactarte respecto a tu propiedad. Te respondemos dentro de 24 horas hábiles.</p>
+            <p class="form-note">Tus datos se usan solo para contactarte respecto a tu propiedad. Te respondemos dentro de 1 a 2 días hábiles.</p>
             <button type="submit" class="btn btn-primary">Enviar solicitud</button>
           </div>
           <div class="form-status" id="formStatus"></div>
@@ -753,7 +754,7 @@
       headers: {'Content-Type': 'application/x-www-form-urlencoded'},
       body: encode(payload)
     }).then(function(){
-      status.textContent = '¡Gracias! Recibimos tu solicitud y te contactaremos dentro de 24 horas hábiles.';
+      status.textContent = '¡Gracias! Recibimos tu solicitud y te contactaremos dentro de 1 a 2 días hábiles.';
       status.className = 'form-status show ok';
       form.reset();
     }).catch(function(){
