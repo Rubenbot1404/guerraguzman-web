@@ -69,6 +69,11 @@
   .box p:last-child{margin-bottom:0;}
 
   footer{padding:36px 0 50px; border-top:1px solid var(--line); margin-top:20px;}
+  .foot-social{display:flex; gap:10px; margin-top:12px;}
+  .foot-social a{display:flex; align-items:center; justify-content:center; width:30px; height:30px; border:1px solid var(--line-strong); border-radius:50%; transition:border-color .2s ease, background .2s ease;}
+  .foot-social a:hover{border-color:var(--copper-bright); background:rgba(199,127,66,0.08);}
+  .foot-social svg{width:14px; height:14px; fill:var(--paper-faint);}
+  .foot-social a:hover svg{fill:var(--copper-bright);}
   .foot-inner{max-width:var(--maxw); margin:0 auto; padding:0 24px; font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--paper-faint); line-height:1.8;}
 
   @media (max-width:600px){
@@ -199,8 +204,47 @@
   <div class="foot-inner">
     Guerra &amp; Guzmán PropGest SpA — contacto@guerraguzman.cl<br>
     © 2026 Guerra &amp; Guzmán PropGest SpA. Todos los derechos reservados.
+
+    <div class="foot-social">
+      <a href="https://www.facebook.com/profile.php?id=61591715496212" target="_blank" rel="noopener" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.51 1.49-3.9 3.77-3.9 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.89h2.78l-.44 2.91h-2.34V22c4.78-.76 8.44-4.92 8.44-9.94z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/guerraguzmanpropgest/" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2c2.72 0 3.06.01 4.12.06 1.06.05 1.79.22 2.43.47.66.26 1.21.6 1.76 1.15.55.55.89 1.1 1.15 1.76.25.64.42 1.37.47 2.43.05 1.06.06 1.4.06 4.12s-.01 3.06-.06 4.12c-.05 1.06-.22 1.79-.47 2.43a4.9 4.9 0 0 1-1.15 1.76 4.9 4.9 0 0 1-1.76 1.15c-.64.25-1.37.42-2.43.47-1.06.05-1.4.06-4.12.06s-3.06-.01-4.12-.06c-1.06-.05-1.79-.22-2.43-.47a4.9 4.9 0 0 1-1.76-1.15 4.9 4.9 0 0 1-1.15-1.76c-.25-.64-.42-1.37-.47-2.43C2.01 15.06 2 14.72 2 12s.01-3.06.06-4.12c.05-1.06.22-1.79.47-2.43.26-.66.6-1.21 1.15-1.76A4.9 4.9 0 0 1 5.45.53c.64-.25 1.37-.42 2.43-.47C8.94.01 9.28 0 12 0zm0 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.25a3.25 3.25 0 1 1 0-6.5 3.25 3.25 0 0 1 0 6.5zm5.2-8.45a1.17 1.17 0 1 1-2.33 0 1.17 1.17 0 0 1 2.33 0z"/></svg>
+      </a>
+    </div>
   </div>
 </footer>
 
+
+<style>
+  .whatsapp-float {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 58px;
+    height: 58px;
+    background: #25D366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 16px rgba(10,39,64,0.35);
+    z-index: 999;
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+  .whatsapp-float:hover { transform: scale(1.08); box-shadow: 0 6px 20px rgba(10,39,64,0.4); }
+  .whatsapp-float svg { width: 30px; height: 30px; }
+  @media (max-width: 680px) {
+    .whatsapp-float { bottom: 18px; right: 18px; width: 52px; height: 52px; }
+    .whatsapp-float svg { width: 26px; height: 26px; }
+  }
+</style>
+<a href="https://wa.me/56938934763?text=Hola%2C%20me%20interesa%20cotizar%20mi%20propiedad" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Escríbenos por WhatsApp">
+  <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" fill="#FFFFFF">
+    <path d="M16.004 3C9.376 3 4 8.376 4 15.004c0 2.373.694 4.583 1.885 6.442L4 29l7.72-1.85a11.94 11.94 0 0 0 4.284.79h.004c6.628 0 12.004-5.376 12.004-12.004C28.012 8.376 22.636 3 16.004 3zm0 21.86h-.003a9.85 9.85 0 0 1-5.02-1.375l-.36-.214-3.727.894.995-3.632-.235-.373a9.84 9.84 0 0 1-1.51-5.256c0-5.44 4.428-9.868 9.867-9.868 2.636 0 5.114 1.028 6.977 2.893a9.8 9.8 0 0 1 2.888 6.98c0 5.44-4.428 9.868-9.872 9.868zm5.41-7.39c-.297-.148-1.755-.867-2.028-.966-.272-.099-.47-.148-.669.148-.198.297-.767.966-.94 1.164-.173.198-.347.223-.644.075-.297-.149-1.254-.462-2.39-1.474-.883-.788-1.48-1.76-1.653-2.058-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.148-.174.198-.298.297-.496.099-.198.05-.372-.025-.52-.074-.149-.669-1.612-.916-2.208-.242-.579-.487-.5-.669-.51-.173-.008-.372-.01-.57-.01a1.096 1.096 0 0 0-.793.372c-.272.297-1.04 1.017-1.04 2.479s1.065 2.876 1.213 3.074c.148.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.693.626.711.226 1.358.194 1.87.118.57-.085 1.755-.718 2.002-1.411.248-.694.248-1.288.173-1.412-.074-.124-.272-.198-.57-.347z"/>
+  </svg>
+</a>
 </body>
+
 </html>
