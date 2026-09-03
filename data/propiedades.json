@@ -1,3 +1,60 @@
 {
-  "propiedades": []
+  "propiedades": [
+    {
+      "superficieTotal": 38,
+      "superficieUtil": 35,
+      "m2": 38,
+      "dorm": 1,
+      "estado": "Disponible",
+      "comuna": "Cerrillos",
+      "gastosComunes": 108829,
+      "caracteristicas": [
+        "Piso 6, orientación norte",
+        "Terraza de 3,08 m²",
+        "Living-comedor integrado a la cocina",
+        "Cocina con encimera y horno empotrados",
+        "Estacionamiento E111 incluido",
+        "Bodega N°35 incluida",
+        "Gasto común incluye agua caliente",
+        "A 568 m del Metro Cerrillos (Línea 6)",
+        "Acceso a Autopista Central y Autopista del Sol",
+        "Conserjería y administración en el lugar",
+        "Piscina",
+        "Gimnasio",
+        "Quinchos",
+        "Cowork",
+        "Terraza mirador",
+        "Hall de doble altura",
+        "Entrega inmediata"
+      ],
+      "bodegas": 1,
+      "planoPdf": "/images/uploads/plano-depto-603-tipo-b1a-edificio-plaza-buzeta.pdf",
+      "descripcion": "Departamento de 1 dormitorio y 1 baño en el piso 6 del Edificio Plaza Buzeta, Av. Buzeta 4220, Cerrillos. Orientación norte, con muy buena luz natural durante todo el día.\n\nSon 35,42 m² útiles más 3,08 m² de terraza — 38,5 m² totales — distribuidos en dormitorio, baño y living-comedor integrado a la cocina, que se entrega con encimera y horno empotrados. Se arrienda sin muebles.\n\nEl precio incluye estacionamiento E111 y bodega N°35.\n\nEl edificio\nConserjería y administración en el lugar, hall de doble altura, piscina, gimnasio, quinchos, cowork y terraza mirador.\n\nUbicación\nA 568 metros del Metro Cerrillos (Línea 6), con acceso directo a Autopista Central y Autopista del Sol. A pasos de la Plazoleta Plaza Buzeta (98 m), farmacia (253 m) y Subcomisaría de Cerrillos (264 m). El Parque Bicentenario de Cerrillos está a 2 km y el Mall Plaza Oeste a 4,6 km.\n\nValores\nArriendo: $400.000 mensuales.\nGasto común: aproximadamente $108.829, incluye agua caliente. Varía según el consumo del edificio.\n\nEntrega inmediata.",
+      "fotos": [
+        "/images/uploads/living-comedor-con-ventanal.jpg",
+        "/images/uploads/comedor-y-vista-despejada.jpg",
+        "/images/uploads/cocina-detalle.jpg",
+        "/images/uploads/cocina-equipada.jpg",
+        "/images/uploads/dormitorio-principal.jpg",
+        "/images/uploads/hall-y-acceso-a-dormitorio.jpg",
+        "/images/uploads/baño-vanitorio.jpg",
+        "/images/uploads/baño-con-tina-y-ducha-.jpg",
+        "/images/uploads/hall-de-acceso.jpg",
+        "/images/uploads/plano-del-departamento.jpg",
+        "/images/uploads/plano-depto-603-tipo-b1a-edificio-plaza-buzeta.pdf",
+        "/images/uploads/hall-de-acceso-edificio-plaza-buzeta.jpg",
+        "/images/uploads/quinchos.jpg"
+      ],
+      "direccion": "Av. Buzeta 4220",
+      "estacionamientos": 1,
+      "tourVirtual": "",
+      "banos": 1,
+      "tipo": "Departamento",
+      "moneda": "CLP",
+      "precioUF": 400000,
+      "operacion": "Arriendo",
+      "titulo": "Departamento 1D/1B en Cerrillos — Piso 6, Edificio Plaza Buzeta",
+      "id": "\tdepto-603-plaza-buzeta-cerrillos"
+    }
+  ]
 }
